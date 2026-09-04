@@ -1,0 +1,130 @@
+{#
+  Vehicle Finder Section
+
+  "Select your car" fitment search: Make -> Model -> Year, submitting to
+  /products filtered via the same attributes[<slug>][]=<value> pattern the
+  theme's attribute filters already use. The make/model list is real
+  business data (Laser Auto Parts' German-brand specialization) and lives
+  in assets/js/features/vehicle-finder.js rather than merchant settings,
+  since it doesn't change on a per-store basis.
+
+  Requires "الماركة" (Make), "الموديل" (Model), and "سنة الصنع" (Year)
+  product attributes configured in the Zid admin with matching option
+  values before filtering returns real results.
+#}
+
+<section
+  section-id="{{ sectionId }}"
+  class="section-vehicle-finder px-4 py-10 md:px-16 md:py-14"
+>
+  <div class="theme-container">
+    <div class="bg-primary text-primary-foreground rounded-lg px-6 py-8 md:px-10 md:py-10">
+      <div class="flex flex-col gap-2 text-center md:mb-6">
+        <h2 class="text-lg font-semibold md:text-xl">
+          {{ settings.title | default(_("ابحث عن القطعة المناسبة لسيارتك")) }}
+        </h2>
+        <p class="text-primary-foreground/70 text-sm">
+          {{ settings.subtitle | default(_("اختر الماركة والموديل والسنة لعرض القطع المتوافقة فقط")) }}
+        </p>
+      </div>
+
+      <form
+        data-vehicle-finder
+        class="mt-6 flex flex-col gap-3 md:flex-row md:items-end"
+      >
+        <div class="flex flex-1 flex-col gap-1.5">
+          <label
+            for="vehicle-make"
+            class="text-primary-foreground/70 text-xs font-medium"
+          >{{ _("الماركة") }}</label>
+          <div
+            class="form-select-wrapper bg-background"
+            data-slot="control"
+          >
+            <select
+              id="vehicle-make"
+              data-vehicle-make
+              required
+              class="form-input text-foreground"
+            >
+              <option value="">{{ _("اختر الماركة") }}</option>
+            </select>
+            <span data-slot="icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              ><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-1 flex-col gap-1.5">
+          <label
+            for="vehicle-model"
+            class="text-primary-foreground/70 text-xs font-medium"
+          >{{ _("الموديل") }}</label>
+          <div
+            class="form-select-wrapper bg-background"
+            data-slot="control"
+          >
+            <select
+              id="vehicle-model"
+              data-vehicle-model
+              data-placeholder="{{ _('اختر الموديل') }}"
+              required
+              disabled
+              class="form-input text-foreground"
+            >
+              <option value="">{{ _("اختر الماركة أولاً") }}</option>
+            </select>
+            <span data-slot="icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              ><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-1 flex-col gap-1.5">
+          <label
+            for="vehicle-year"
+            class="text-primary-foreground/70 text-xs font-medium"
+          >{{ _("سنة الصنع") }}</label>
+          <div
+            class="form-select-wrapper bg-background"
+            data-slot="control"
+          >
+            <select
+              id="vehicle-year"
+              data-vehicle-year
+              required
+              class="form-input text-foreground"
+            >
+              <option value="">{{ _("اختر السنة") }}</option>
+            </select>
+            <span data-slot="icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              ><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-filled btn-lg shrink-0"
+        >
+          {{ _("بحث") }}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

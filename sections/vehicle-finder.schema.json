@@ -1,0 +1,28 @@
+{
+  "template": "sections/vehicle-finder.jinja",
+  "name": {
+    "ar": "البحث حسب السيارة",
+    "en": "Vehicle Finder"
+  },
+  "icon": "car-line",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": {
+        "ar": "العنوان",
+        "en": "Title"
+      },
+      "default": "ابحث عن القطعة المناسبة لسيارتك"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": {
+        "ar": "العنوان الفرعي",
+        "en": "Subtitle"
+      },
+      "default": "اختر الماركة والموديل والسنة لعرض القطع المتوافقة فقط"
+    }
+  ]
+}
