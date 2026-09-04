@@ -6,9 +6,9 @@
  * attributes[<slug>][]=<value> pattern the theme's existing attribute
  * filters use (see components/products/headless/filters/product-filters.jinja).
  *
- * Requires matching "الماركة" (Make), "الموديل" (Model), and "سنة الصنع"
- * (Year) product attributes to be configured in the Zid admin with these
- * exact option values before filtering returns real results.
+ * Requires matching "Make" (slug: make), "Model" (slug: model), and "Year"
+ * (slug: year) product attributes to be configured in the Zid admin with
+ * these exact option values before filtering returns real results.
  */
 
 const VEHICLES = {
@@ -88,9 +88,9 @@ class VehicleFinder {
     const year = this.yearSelect.value;
 
     const url = new URL(window.location.origin + "/products");
-    if (make) url.searchParams.append("attributes[الماركة][]", make);
-    if (model) url.searchParams.append("attributes[الموديل][]", model);
-    if (year) url.searchParams.append("attributes[سنة الصنع][]", year);
+    if (make) url.searchParams.append("attributes[make][]", make);
+    if (model) url.searchParams.append("attributes[model][]", model);
+    if (year) url.searchParams.append("attributes[year][]", year);
 
     window.location.href = url.toString();
   }
