@@ -10,11 +10,23 @@
     {% set can_preorder = product.can_be_preordered %}
     {% set preorder_stock_behavior = product.preorder_stock_behavior %}
     {% set can_buy = (selected_product and (selected_product.in_stock or can_preorder)) %}
+    {# Text-type metafields (e.g. "Compatible Vehicle") surfaced above the fold below —
+       fitment is the #1 purchase-decision factor for auto parts, not a spec to bury
+       in the collapsed Features accordion further down the page. #}
+    {% set fitment_items = [] %}
+    {% if store.settings.products.is_metafields_enabled and product.metafields %}
+      {% for item in product.metafields %}
+        {% if item.data_type == 'text' and item.value and item.value[session.lang] %}
+          {% set fitment_items = fitment_items + [item] %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   {% else %}
     {% set has_preorder = false %}
     {% set can_preorder = false %}
     {% set preorder_stock_behavior = '' %}
     {% set can_buy = false %}
+    {% set fitment_items = [] %}
   {% endif %}
 
   {# Breadcrumb Section #}
@@ -89,6 +101,16 @@
                 {% endif %}
               {% endif %}
             </div>
+            {% if fitment_items %}
+              <div class="border-border bg-secondary flex flex-col gap-1 rounded-lg border px-4 py-3">
+                {% for item in fitment_items %}
+                  <p class="text-foreground text-sm">
+                    <span class="font-medium">{{ item.name[session.lang] if item.name[session.lang] else item.name.ar }}:</span>
+                    {{ item.value[session.lang] }}
+                  </p>
+                {% endfor %}
+              </div>
+            {% endif %}
             {# Product Badges #}
             <div
               id="product-badges"
