@@ -2,6 +2,18 @@
 {% set filter_keys = ["sort_by", "order", "price_min", "price_max", "availability"] %}
 {% set is_filtered = session.query_params and filter_keys | select("in", session.query_params) | list | length > 0 %}
 
+{# Same condition components/products/headless/filters/product-filters.jinja uses to
+   decide whether it renders anything — mirrored here so the simple availability/price
+   popovers only show when there's no redundant attribute-filter drawer already covering them. #}
+{% set has_custom_filters = namespace(value=false) %}
+{% if filters and filters.attributes %}
+  {% for attribute in filters.attributes %}
+    {% if attribute.is_enabled and attribute.data | length > 0 %}
+      {% set has_custom_filters.value = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 
 <div class="flex flex-col gap-4">
   <div class="flex flex-wrap items-center justify-between">
@@ -10,7 +22,7 @@
    <div class="md:hidden">{% include 'components/products/filters/advanced-filters.jinja' %}</div>
 
     {# Simple Filters (Availability & Price popovers) - Only for stores WITHOUT custom filters on desktop #}
-    {% if not ns.has_custom_filters %}
+    {% if not has_custom_filters.value %}
       <div class="hidden md:block">{% include 'components/products/filters/default-filters.jinja' %}</div>
     {% endif %}
 

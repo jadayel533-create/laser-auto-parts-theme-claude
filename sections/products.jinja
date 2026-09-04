@@ -14,7 +14,7 @@
           more_url=(settings.products.url or url_for('list_products')) if settings.display_more else none,
           more_text=settings.more_text if settings.display_more else none,
           carousel_id=sectionId,
-          is_priority_section=(settings.order <= 2)
+          is_priority_section=((settings.order | default(0)) <= 2)
         %}
           {% include 'components/products/products-carousel.jinja' %}
         {% endwith %}
