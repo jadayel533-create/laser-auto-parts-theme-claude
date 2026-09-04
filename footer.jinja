@@ -144,12 +144,12 @@
             href="https://apps.apple.com/app/id{{ store.settings.general.one_signal.ios_app_id }}"
             target="_blank"
             rel="noopener"
-            aria-label="Download on the App Store"
+            aria-label="{{ _('Download on the App Store') }}"
             class="block"
           >
             <img
               src="{{ "images/app-store-logo.svg" | asset_url }}"
-              alt="Download on the App Store"
+              alt="{{ _('Download on the App Store') }}"
               class="h-12 w-auto"
               loading="lazy"
             />
@@ -160,12 +160,12 @@
             href="https://play.google.com/store/apps/details?id={{ store.settings.general.one_signal.android_package_name }}"
             target="_blank"
             rel="noopener"
-            aria-label="Get it on Google Play"
+            aria-label="{{ _('Get it on Google Play') }}"
             class="block"
           >
             <img
               src="{{ "images/google-play-logo.svg" | asset_url }}"
-              alt="Get it on Google Play"
+              alt="{{ _('Get it on Google Play') }}"
               class="h-12 w-auto"
               loading="lazy"
             />

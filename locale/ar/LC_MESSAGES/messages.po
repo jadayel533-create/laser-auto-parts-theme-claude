@@ -58,6 +58,12 @@ msgstr "السلة"
 msgid "Toggle menu"
 msgstr "فتح القائمة"
 
+msgid "Download on the App Store"
+msgstr "حمّل التطبيق من App Store"
+
+msgid "Get it on Google Play"
+msgstr "حمّل التطبيق من Google Play"
+
 msgid "Login"
 msgstr "تسجيل الدخول"
 
