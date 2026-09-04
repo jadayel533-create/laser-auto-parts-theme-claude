@@ -77,6 +77,19 @@
           </div>
         {% endif %}
       {% endif %}
+      {# Fitment / compatibility at a glance: shows the merchant's first text metafield
+         (e.g. "Compatible Vehicle") right on the card, not just the product page —
+         parts shoppers need this before clicking in. #}
+      {% if store.settings.products.is_metafields_enabled and product.metafields %}
+        {% for item in product.metafields[:1] %}
+          {% if item.data_type == 'text' and item.value and item.value[session.lang] %}
+            <p class="text-muted text-xs">
+              <span class="font-medium">{{ item.name[session.lang] if item.name[session.lang] else item.name.ar }}:</span>
+              {{ item.value[session.lang] }}
+            </p>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
     </div>
     {# Price Section #}
     {% if product.formatted_sale_price is not none %}
