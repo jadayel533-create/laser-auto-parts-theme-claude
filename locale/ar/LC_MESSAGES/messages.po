@@ -55,6 +55,9 @@ msgstr "المزيد"
 msgid "Cart"
 msgstr "السلة"
 
+msgid "Toggle menu"
+msgstr "فتح القائمة"
+
 msgid "Login"
 msgstr "تسجيل الدخول"
 
