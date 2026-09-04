@@ -4,7 +4,7 @@
 
 {% set preorder_badge_variant = 'default' %}
 
-{% set selected_product = product.selected_product %}
+{% set selected_product = product.selected_product | default(product) %}
 {% set has_preorder = product.effective_preorder_campaign is not none %}
 {% set can_preorder = product.can_be_preordered %}
 
