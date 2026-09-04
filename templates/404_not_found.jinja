@@ -14,8 +14,8 @@
         <svg width="100%" viewBox="0 0 680 50" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="bar-grad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#A89C90" stop-opacity="0.2"/>
-              <stop offset="100%" stop-color="#A89C90" stop-opacity="1"/>
+              <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="var(--accent)" stop-opacity="1"/>
             </linearGradient>
             <clipPath id="bar-clip">
               <rect x="40" y="6" width="600" height="16" rx="8"/>
@@ -24,7 +24,7 @@
 
           <!-- Track -->
           <rect x="40" y="6" width="600" height="16" rx="8"
-                fill="none" stroke="#A89C90" stroke-opacity="0.33" stroke-width="1.5"/>
+                fill="none" stroke="var(--border)" stroke-opacity="0.6" stroke-width="1.5"/>
 
           <!-- Fill -->
           <g clip-path="url(#bar-clip)">
@@ -34,8 +34,8 @@
           <!-- Label -->
           <text x="340" y="40"
                 text-anchor="middle"
-                font-family="var(--font-sans)" font-size="12" font-weight="400"
-                fill="var(--color-text-secondary)">
+                font-family="var(--font-family)" font-size="12" font-weight="400"
+                fill="var(--muted)">
             {{ _("HEADING TO THE HOMEPAGE ...") }}
           </text>
         </svg>
